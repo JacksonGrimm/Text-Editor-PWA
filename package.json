@@ -4,9 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start:dev": "concurrently \"cd client && npm run build\" \"cd server && npm run server\" ",    "start": "webpack-dev-server",
+    "start:dev": "concurrently \"cd client && npm run build\" \"cd server && npm run server\" ",    
+    "start": "npm run build && cd server && node server.js",
     "server": "node ./server/server.js",
-    "build": "webpack-dev-build",
+    "build": "cd client && npm run build",
     "install": "cd server && npm i && cd ../client && npm i",
     "client": "cd client && npm start"
   },
