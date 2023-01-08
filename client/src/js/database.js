@@ -1,21 +1,52 @@
-import { openDB } from 'idb';
+import { openDB } from "idb";
 
 const initdb = async () =>
-  openDB('jate', 1, {
+  openDB("jate", 1, {
     upgrade(db) {
-      if (db.objectStoreNames.contains('jate')) {
-        console.log('jate database already exists');
+      if (db.objectStoreNames.contains("jate")) {
+        console.log("jate database already exists");
         return;
       }
-      db.createObjectStore('jate', { keyPath: 'id', autoIncrement: true });
-      console.log('jate database created');
+      db.createObjectStore("jate", { keyPath: "id", autoIncrement: true });
+      console.log("jate database created");
     },
   });
 
 // TODO: Add logic to a method that accepts some content and adds it to the database
-export const putDb = async (content) => console.error('putDb not implemented');
-
+export const putDb = async (content) => {
+  try {
+    const dbName = "jate";
+    //first open the DB
+    //define the transaction
+    //define the store with the content
+    //then put in the request
+    const dataBase = await openDB(dbName);
+    const transaction = dataBase.transaction(dbName, "readWrite");
+    const store = transaction.objectStore(dbName);
+    const request = store.put({ id: id, content });
+    const response = await request;
+    console.log(response);
+  } catch (error) {
+    console.error("putDb not implemented");
+  }
+};
 // TODO: Add logic for a method that gets all the content from the database
-export const getDb = async () => console.error('getDb not implemented');
+export const getDb = async () => {
+  try {
+    const dbName = "jate";
+    //first open the DB
+    //define the transaction
+    //define the store with the content
+    //then put in the request
+    const dataBase = await openDB(dbName, 1);
+    const transaction = dataBase.transaction(dbName, "readonly");
+    const store = transaction.objectStore(dbName);
+    const request = store.get(id);
+    const response = await request;
+    console.log(response);
+  } catch (error) {
+    console.error("putDb not implemented");
+  }
+};
 
 initdb();
