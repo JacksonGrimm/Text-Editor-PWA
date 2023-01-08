@@ -27,6 +27,7 @@ module.exports = () => {
         //what it will be saved as inside of the dist
         swDest: "src-sw.js",
       }),
+      //manifest builder
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
@@ -40,7 +41,9 @@ module.exports = () => {
         icons: [
           {
             src: path.resolve("src/images/logo.png"),
+            //different available sizes
             sizes: [96, 128, 192, 256, 384, 512],
+            //will be saved as ./assets/icons/image
             destination: path.join("assets", "icons"),
           },
         ],

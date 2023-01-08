@@ -6,8 +6,10 @@ const { precacheAndRoute } = require("workbox-precaching/precacheAndRoute");
 precacheAndRoute(self.__WB_MANIFEST);
 
 registerRoute(
+  //what will be cached
   ({ request }) => ["style", "script", "worker"].includes(request.destination),
   new StaleWhileRevalidate({
+    //the name of where the assets are cached
     cacheName: "asset-cache",
     plugins: [
       new CacheableResponsePlugin({
