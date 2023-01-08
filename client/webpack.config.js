@@ -22,8 +22,8 @@ module.exports = () => {
         template: "./index.html",
       }),
       new InjectManifest({
-        swSrc: "./src/sw.js",
-        swDest: "service-worker.js",
+        swSrc: "./src-sw.js",
+        swDest: "src-sw.js",
       }),
       new WebpackPwaManifest({
         fingerprints: false,
@@ -38,7 +38,7 @@ module.exports = () => {
         icons: [
           {
             src: path.resolve("src/images/logo.png"),
-            sizes: [500],
+            sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join("assets", "icons"),
           },
         ],
@@ -50,10 +50,6 @@ module.exports = () => {
         {
           test: /\.css$/i,
           use: ["style-loader", "css-loader"],
-        },
-        {
-          test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: "asset/resource",
         },
         {
           test: /\.m?js$/,
