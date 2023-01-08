@@ -25,6 +25,24 @@ module.exports = () => {
         swSrc: "./src/sw.js",
         swDest: "service-worker.js",
       }),
+      new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
+        name: "Text Editor",
+        short_name: "Editor",
+        description: "Edit text here!",
+        background_color: "#225ca3",
+        theme_color: "#225ca3",
+        start_url: "./",
+        publicPath: "./",
+        icons: [
+          {
+            src: path.resolve("src/images/logo.png"),
+            sizes: [500],
+            destination: path.join("assets", "icons"),
+          },
+        ],
+      }),
     ],
 
     module: {
