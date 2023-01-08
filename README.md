@@ -22,7 +22,7 @@ This app is installable, simply go to the application url and hit install!
 
 ### Screen Shots
 
-![alt text](./screenShots/Screenshot1.png)
+![alt text](./screenShots/screenshot1.png)
 
 ## License
 
