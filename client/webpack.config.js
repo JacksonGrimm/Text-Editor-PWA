@@ -22,7 +22,9 @@ module.exports = () => {
         template: "./index.html",
       }),
       new InjectManifest({
+        //the service worker src
         swSrc: "./src-sw.js",
+        //what it will be saved as inside of the dist
         swDest: "src-sw.js",
       }),
       new WebpackPwaManifest({
